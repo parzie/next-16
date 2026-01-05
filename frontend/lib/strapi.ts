@@ -50,3 +50,45 @@ export const fetchAPI = async (path: string, options: RequestInit = {}) => {
 
   return response.json();
 };
+
+export async function registerUserService(userData: { username: string; email: string; password: string }) {
+  try {
+    const response = await fetch(getStrapiURL("/api/auth/local/register"), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+
+    const data = await response.json();
+    console.log("Parsed response data:", data);
+
+    return data;
+  } catch (error) {
+    console.error("Error registering user:", error);
+
+    throw error;
+  }
+}
+
+export async function loginUserService(userData: { username: string; email: string; password: string }) {
+  try {
+    const response = await fetch(getStrapiURL("/api/auth/local"), {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(userData),
+    });
+
+    const data = await response.json();
+    console.log("Parsed response data:", data);
+
+    return data;
+  } catch (error) {
+    console.error("Error login user:", error);
+
+    throw error;
+  }
+} 

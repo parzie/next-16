@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 
-// import { actions } from "@/actions";
+import { actions } from "@/actions";
 
 import {
   CardTitle,
@@ -17,8 +17,8 @@ import { Label } from "@/components/ui/label";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { useActionState } from "react";
-// import { type FormState } from "@/validations/auth";
-// import { FormError } from "./form-error";
+import { type FormState } from "@/validations/auth";
+import { FormError } from "./form-error";
 
 const styles = {
   container: "w-full max-w-md",
@@ -32,29 +32,29 @@ const styles = {
   link: "ml-2 text-pink-500",
 };
 
-// const INITIAL_STATE: FormState = {
-//   success: false,
-//   message: undefined,
-//   strapiErrors: null,
-//   zodErrors: null,
-//   data: {
-//     username: "",
-//     password: "",
-//     email: "",
-//   },
-// };
+const INITIAL_STATE: FormState = {
+  success: false,
+  message: undefined,
+  strapiErrors: null,
+  zodErrors: null,
+  data: {
+    username: "",
+    password: "",
+    email: "",
+  },
+};
 
 export function SignupForm() {
-  //   const [formState, formAction] = useActionState(
-  //     actions.auth.registerUserAction,
-  //     INITIAL_STATE
-  //   );
+    const [formState, formAction] = useActionState(
+      actions.auth.registerUserAction,
+      INITIAL_STATE
+    );
 
-  // console.log(formState);
+  console.log(formState);
 
   return (
     <div className={styles.container}>
-      <form>
+      <form action={formAction}>
         {/* //action={formAction}> */}
         <Card>
           <CardHeader className={styles.header}>
@@ -71,9 +71,9 @@ export function SignupForm() {
                 name="username"
                 type="text"
                 placeholder="username"
-                // defaultValue={formState.data?.username ?? ""}
+                defaultValue={formState.data?.username ?? ""}
               />
-              {/* <FormError error={formState.zodErrors?.username} /> */}
+              <FormError error={formState.zodErrors?.username} />
             </div>
             <div className={styles.fieldGroup}>
               <Label htmlFor="email">Email</Label>
@@ -82,9 +82,9 @@ export function SignupForm() {
                 name="email"
                 type="email"
                 placeholder="name@example.com"
-                // defaultValue={formState.data?.email ?? ""}
+                defaultValue={formState.data?.email ?? ""}
               />
-              {/* <FormError error={formState.zodErrors?.email} /> */}
+              <FormError error={formState.zodErrors?.email} />
             </div>
             <div className={styles.fieldGroup}>
               <Label htmlFor="password">Password</Label>
@@ -93,18 +93,18 @@ export function SignupForm() {
                 name="password"
                 type="password"
                 placeholder="password"
-                // defaultValue={formState.data?.password ?? ""}
+                defaultValue={formState.data?.password ?? ""}
               />
-              {/* <FormError error={formState.zodErrors?.password} /> */}
+              <FormError error={formState.zodErrors?.password} />
             </div>
           </CardContent>
           <CardFooter className={styles.footer}>
             <Button className={styles.button}>Sign Up</Button>
-            {/* {formState.strapiErrors && (
+            {formState.strapiErrors && (
               <p className="text-pink-500 text-xs italic mt-1 py-2">
                 {formState.strapiErrors.message}
               </p>
-            )} */}
+            )}
           </CardFooter>
         </Card>
         <div className={styles.prompt}>
