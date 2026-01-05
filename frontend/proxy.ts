@@ -1,9 +1,8 @@
 import { cookies } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { is } from "zod/locales";
 import { STRAPI_BASE_URL } from "./lib/strapi";
 
-const protectedRoutes = ["/dashboard", "/profile", "/settings"];
+const protectedRoutes = ["/dashboard"];
 
 export function checkIsProtectedRoute(pathname: string): boolean {
   return protectedRoutes.includes(pathname);
@@ -51,5 +50,5 @@ export async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)", "/dashboard", "/dashboard/:path*", "/profile/:path*", "/settings/:path*"],  // Apply the proxy to protected routes
+  matcher: ["/((?!api|_next/static|_next/image|favicon.ico).*)", "/dashboard", "/dashboard/:path*"],  // Apply the proxy to protected routes
 }

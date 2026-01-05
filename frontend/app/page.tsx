@@ -1,5 +1,3 @@
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
 import { fetchHomePage } from "@/lib/strapi";
 import { HeroSection } from "@/components/hero-section";
 

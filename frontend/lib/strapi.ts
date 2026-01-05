@@ -30,25 +30,26 @@ export async function fetchHomePage() {
 
   const queryString = qs.stringify(QUERY_HOME_PAGE);
 
-  const response = await fetchAPI(`/api/home-page?${queryString}`);
+  const response = await getStrapiData(`/api/home-page?${queryString}`);
   return response?.data;
 }
 
-export const fetchAPI = async (path: string, options: RequestInit = {}) => {
+export const getStrapiData = async (path: string) => {
   const requestUrl = getStrapiURL(path);
-  const response = await fetch(requestUrl, {
-    ...options,
-    headers: {
-      "Content-Type": "application/json",
-      ...(options.headers || {}),
-    },
-  });
 
-  if (!response.ok) {
-    throw new Error(`An error occurred while fetching data: ${response.statusText}`);
+  try {
+    const response = await fetch(requestUrl);
+
+    if (!response.ok) {
+      throw new Error(`An error occurred while fetching data: ${response.statusText}`);
+    }
+    return await response.json();
+
+  } catch (error) {
+    console.error("Fetch error:", error);
+    throw error;
   }
 
-  return response.json();
 };
 
 export async function registerUserService(userData: { username: string; email: string; password: string }) {

@@ -25,11 +25,6 @@ export async function registerUserAction(prevState: FormState, formData: FormDat
 
     console.log("Registering user with fields:", fields);
 
-    // Here you would typically call your backend API to register the user
-    // For demonstration, we just log the fields
-
-    // return { success: true, message: "User registered successfully" };
-
     const validatedFields = SignupFormSchema.safeParse(fields);
 
     if (!validatedFields.success) {
@@ -46,8 +41,6 @@ export async function registerUserAction(prevState: FormState, formData: FormDat
     }
 
     console.log("User registered successfully:", response);
-
-    // return { success: true, message: "Registration successfull", strapiErrors: null, zodErrors: null, data: fields };
 
     const cookieStore = await cookies();
     cookieStore.set(
