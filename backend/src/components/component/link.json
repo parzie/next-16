@@ -1,0 +1,22 @@
+{
+  "collectionName": "components_component_links",
+  "info": {
+    "displayName": "Link",
+    "icon": "apps"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string"
+    },
+    "isExternal": {
+      "type": "boolean"
+    },
+    "href": {
+      "type": "string",
+      "default": "#",
+      "required": true
+    }
+  },
+  "config": {}
+}
