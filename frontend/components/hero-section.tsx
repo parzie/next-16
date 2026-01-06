@@ -28,8 +28,8 @@ export function HeroSection({
   const { heading, subHeading, link } = data;
 
   const imageURL = data.image?.url.startsWith("http")
-    ? data.image.url
-    : `${STRAPI_BASE_URL}${data.image.url}`;
+    ? data.image?.url
+    : `${STRAPI_BASE_URL}${data.image?.url}`;
 
   return (
     <header className={styles.header}>
