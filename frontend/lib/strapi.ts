@@ -47,7 +47,7 @@ export const getStrapiData = async (path: string) => {
 
   } catch (error) {
     console.error("Fetch error:", error);
-    throw error;
+    return null;
   }
 
 };

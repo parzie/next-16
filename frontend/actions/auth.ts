@@ -1,11 +1,11 @@
 "use server"
-
-import { registerUserService } from "@/lib/strapi";
-import { FormState, SignupFormSchema } from "@/validations/auth";
 import { z } from "zod";
 
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
+
+import { type FormState, SignupFormSchema } from "@/validations/auth";
+import { registerUserService } from "@/lib/strapi";
 
 const cookieConfig = {
     maxAge: 60 * 60 * 24 * 7, // 1 week
@@ -51,7 +51,4 @@ export async function registerUserAction(prevState: FormState, formData: FormDat
 
     // Redirect to home page after successful registration
     redirect("/dashboard");
-
-    return { success: true, message: "Registration successful", strapiErrors: null, zodErrors: null, data: fields };
-
 }
