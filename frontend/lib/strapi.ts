@@ -34,7 +34,7 @@ export async function fetchHomePage() {
   return response?.data;
 }
 
-export const getStrapiData = async (path: string) => {
+export async function getStrapiData(path: string) {
   const requestUrl = getStrapiURL(path);
 
   try {
