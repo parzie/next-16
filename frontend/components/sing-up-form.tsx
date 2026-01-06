@@ -46,7 +46,7 @@ const INITIAL_STATE: FormState = {
 
 export function SignupForm() {
     const [formState, formAction] = useActionState(
-      actions.auth.registerUserAction,
+      actions?.auth?.registerUserAction,
       INITIAL_STATE
     );
 
@@ -55,7 +55,6 @@ export function SignupForm() {
   return (
     <div className={styles.container}>
       <form action={formAction}>
-        {/* //action={formAction}> */}
         <Card>
           <CardHeader className={styles.header}>
             <CardTitle className={styles.title}>Sign Up</CardTitle>

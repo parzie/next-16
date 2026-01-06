@@ -47,8 +47,8 @@ export function HeroSection({
       <div className={styles.overlay}>
         <h1 className={styles.heading}>{heading}</h1>
         <p className={styles.subheading}>{subHeading}</p>
-        <Link className={styles.button} href={link.href}>
-          {link.label}
+        <Link className={styles.button} href={link?.href}>
+          {link?.label}
         </Link>
       </div>
     </header>
