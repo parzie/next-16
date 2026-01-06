@@ -14,7 +14,7 @@ export default async function Home() {
 
   console.log("Strapi Data:", strapiData);
   const { title, description } = strapiData || {};
-  const [HeroSectionData] = strapiData.sections || [];
+  const [HeroSectionData] = strapiData?.sections || [];
   return (
     <main className="container mx-auto py-6">
       <h1 className="text-4xl font-bold mb-4">{title}</h1>
