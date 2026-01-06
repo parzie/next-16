@@ -3,6 +3,8 @@ import qs from "qs";
 export const STRAPI_BASE_URL = process.env.STRAPI_BASE_URL || "http://localhost:1337";
 
 export const getStrapiURL = (path: string) => {
+  console.log("Constructing Strapi URL for path:", path);
+  console.log("STRAPI_BASE_URL:", STRAPI_BASE_URL);
   return `${STRAPI_BASE_URL}${path}`;
 };
 
